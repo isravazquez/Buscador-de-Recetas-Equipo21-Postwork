@@ -11,6 +11,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'search.html',
+      template: './src/search.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'meal.html',
+      template: './src/meal.html'
     })
   ],
   module: {
@@ -27,7 +35,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i, 
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
       {
