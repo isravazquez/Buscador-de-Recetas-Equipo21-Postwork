@@ -1,50 +1,51 @@
 /** main.scss */
 @use 'global' as *;
 
-.search-container{
-    background-color: hsl(344, 79%, 87%);
+.search-container {
+    background-color: $main-color;
 
     .navbar {
         width: 100vw;
         position: relative;
-        background-color: #730220;
-    
-    
+        background-color: $nav-color;
+
+
         .search-form-container form {
             width: 100%;
-    
+
             input {
                 width: 75%;
             }
-    
+
             button {
                 width: 25%;
+                background-color: #72c96a;
             }
         }
-    
+
         .go-home {
-            color: #f2f2f2;
+            color: $white;
             position: absolute;
             left: 20px;
             bottom: 50%;
-            font-family: 'Montserrat', sans-serif;
+            font-family: $font-default, sans-serif;
         }
-    
+
     }
-    
-    
-    
+
+
+
     .card {
         position: relative;
         display: inline-block;
         border: none;
         width: 100%;
-    
+
         .card-img {
             max-height: 20vh;
             object-fit: cover;
         }
-    
+
         .card-title {
             position: absolute;
             bottom: 0;
@@ -56,13 +57,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-    
+
             h5 {
                 color: $white;
                 font-size: 1rem;
-                font-family: 'Raleway', sans-serif;
+                font-family: $font-card-title, sans-serif;
+            }
+        }
+
+        &:hover {
+
+            .card-title {
+                height: 100%;
             }
         }
     }
 }
-

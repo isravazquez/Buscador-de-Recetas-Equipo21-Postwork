@@ -7,7 +7,7 @@
 }
 
 html {
-  height: 100%; 
+  height: 100%;
 }
 
 body {
@@ -21,78 +21,80 @@ body {
   grid-template-columns: 0.5fr 9fr 0.5fr;
   grid-template-rows: 40% 55% 5%;
   grid-template-areas:
-     "head    head        head"
-     ".          search      .     "
-     "foot     foot          foot";
-}
+    "head    head        head"
+    ".          search      .     "
+    "foot     foot          foot";
 
-header {
-  grid-area: head;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-}
+  header {
+    grid-area: head;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
 
-img.logo{
-  width: 5rem;
-}
 
-#title {   
-  font-style:oblique ;
-  color: rgba(100, 100, 100, alpha);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 1rem;
-  font-family: 'Raleway', sans-serif;
-}
+    img.logo {
+      width: 5rem;
+    }
 
-.container.search{
-  grid-area: search;
-  display: flex;
-  flex-direction: column;
-  max-width: 35rem;
-}
+    #title {
+      font-style: oblique;
+      color: rgb(100, 100, 100);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 1rem;
+      font-family: 'Raleway', sans-serif;
+    }
 
-input.form-control {
-  background-color: #f2f2f2;
-  border-color: #730220;
-  border-width: 2px;
-  
-}
+  }
 
-#button-addon2 {
-  background-color: #72c96a;
-  border-width: 2px;
-}
+  .container.search {
+    grid-area: search;
+    display: flex;
+    flex-direction: column;
+    max-width: 35rem;
 
-div.random-search-container{
-  display: flex;
-  justify-content: center;
-}
+    input.form-control {
+      background-color: #f2f2f2;
+      border-color: #730220;
+      border-width: 2px;
 
-button.button-random-search{
-  border-width: 2px;
-  border-color: #730220;
-}
+    }
 
-.material-symbols-outlined {
-  font-variation-settings:
-     'FILL' 0,
-     'wght' 700,
-     'GRAD' 200,
-     'opsz' 48
-}
+    #button-addon2 {
+      background-color: #72c96a;
+      border-width: 2px;
 
-footer {
-  background-color: #f2f2f2;
-  grid-area: foot;
-}
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 700,
+          'GRAD' 200,
+          'opsz' 48
+      }
+    }
 
-#about{
-  margin-bottom: 0%;
-  display: flex;
-  justify-content: center;
+    div.random-search-container {
+      display: flex;
+      justify-content: center;
+
+      button.button-random-search {
+        border-width: 2px;
+        border-color: #730220;
+      }
+    }
+  }
+
+  footer {
+    background-color: #f2f2f2;
+    grid-area: foot;
+
+    #about {
+      margin-bottom: 0%;
+      display: flex;
+      justify-content: center;
+    }
+  }
 }

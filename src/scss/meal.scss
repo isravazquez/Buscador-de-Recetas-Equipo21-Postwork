@@ -1,17 +1,17 @@
 @use 'global' as *;
 
 .meal-container {
-    background-color: hsl(344, 79%, 87%);
+    background-color: $main-color;
 
     .navbar {
         width: 100vw;
         position: relative;
-        background-color: #730220;
+        background-color: $nav-color;
         //background-color: #f8a648;
         //box-shadow: 0 5px rgba($color: #000000, $alpha: 0.1);
 
         .go-home {
-            color: #f2f2f2;
+            color: $white;
             position: absolute;
             left: 20px;
         }
@@ -43,7 +43,7 @@
             h5 {
                 color: $white;
                 font-size: 3rem;
-                font-family: 'Raleway', sans-serif;
+                font-family: $font-card-title, sans-serif;
             }
         }
     }
@@ -61,7 +61,7 @@
 
         h2 {
             color: rgb(100, 100, 100);
-            font-family: 'Montserrat', sans-serif;
+            font-family: $font-default, sans-serif;
         }
 
         p {
