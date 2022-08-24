@@ -29,6 +29,10 @@
             left: 20px;
             bottom: 50%;
             font-family: $font-default, sans-serif;
+
+            &:hover{
+                opacity: .8;
+            }
         }
 
     }
@@ -44,6 +48,7 @@
         .card-img {
             max-height: 20vh;
             object-fit: cover;
+            transition: 1s;
         }
 
         .card-title {
@@ -57,6 +62,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: 1s;
 
             h5 {
                 color: $white;
@@ -66,7 +72,9 @@
         }
 
         &:hover {
-
+            .card-img{
+                max-height: 21vh;
+            }
             .card-title {
                 height: 100%;
             }

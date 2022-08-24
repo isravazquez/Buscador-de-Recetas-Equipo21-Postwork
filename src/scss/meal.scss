@@ -7,13 +7,15 @@
         width: 100vw;
         position: relative;
         background-color: $nav-color;
-        //background-color: #f8a648;
-        //box-shadow: 0 5px rgba($color: #000000, $alpha: 0.1);
 
         .go-home {
             color: $white;
             position: absolute;
             left: 20px;
+
+            &:hover {
+                opacity: .8;
+            }
         }
     }
 
