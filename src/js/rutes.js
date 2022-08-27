@@ -9,7 +9,7 @@ export function rutes() {
 
             break
         case "/search.html":
-            controllers.requestAPI(localStorage.getItem("inputValue"))
+            controllers.list()
             controllers.search()
 
             break;
