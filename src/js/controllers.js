@@ -7,12 +7,23 @@ const controllers = {
             return window.open("../search.html", "_self");
         })
     },
-    list: async function(){
+    list: async function () {
         const cardsContainer = document.getElementById("cards-container")
-        const {meals} = await this.requestAPI(localStorage.getItem("inputValue"))
-        meals.forEach( meal => {
-            cardsContainer.appendChild(this.createCard(meal))
-        })
+        if (/\s/.test(localStorage.getItem("inputValue")) || !localStorage.getItem("inputValue")) {
+            const warning = document.createElement("h2")
+            const warningText = document.createTextNode("No olvides escribir una receta en el buscador")
+            warning.appendChild(warningText)
+            warning.style.color = "red"
+            warning.style.textAlign = "center"
+            warning.style.margin = "2rem"
+            cardsContainer.appendChild(warning)
+        } else {
+            const { meals } = await this.requestAPI(localStorage.getItem("inputValue"))
+            meals.forEach(meal => {
+                cardsContainer.appendChild(this.createCard(meal))
+            })
+        }
+
     },
     requestAPI: async function (mealToSearch) {
         try {
@@ -24,32 +35,32 @@ const controllers = {
         }
     },
     createCard: function (meal) {
-            const link = document.createElement('a')
-            link.className = "col-12 col-sm-6 col-md-4"
-            link.href = "/meal.html" //Posiblemente se quite si hacemos que una función redirija el enlace
+        const link = document.createElement('a')
+        link.className = "col-12 col-sm-6 col-md-4"
+        link.href = "/meal.html" //Posiblemente se quite si hacemos que una función redirija el enlace
 
-            const card = document.createElement("div")
-            card.className = "card mx-auto my-2"
+        const card = document.createElement("div")
+        card.className = "card mx-auto my-2"
 
-            link.appendChild(card)
+        link.appendChild(card)
 
-            const img = document.createElement("img")
-            img.className = "card-img"
-            img.src = meal.strMealThumb
-            img.alt = `${meal.strArea}-${meal.strCategory}-img`
+        const img = document.createElement("img")
+        img.className = "card-img"
+        img.src = meal.strMealThumb
+        img.alt = `${meal.strArea}-${meal.strCategory}-img`
 
-            const cardTitleContainer = document.createElement("div")
-            cardTitleContainer.className = "card-title"
+        const cardTitleContainer = document.createElement("div")
+        cardTitleContainer.className = "card-title"
 
-            const cardTitle = document.createElement("h5")
-            const cardTitleText = document.createTextNode(meal.strMeal)
+        const cardTitle = document.createElement("h5")
+        const cardTitleText = document.createTextNode(meal.strMeal)
 
-            cardTitle.appendChild(cardTitleText)
-            cardTitleContainer.appendChild(cardTitle)
-            
-            card.appendChild(img)
-            card.appendChild(cardTitleContainer)
-            return link
+        cardTitle.appendChild(cardTitleText)
+        cardTitleContainer.appendChild(cardTitle)
+
+        card.appendChild(img)
+        card.appendChild(cardTitleContainer)
+        return link
     }
 
 }
