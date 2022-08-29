@@ -5,8 +5,8 @@ export function rutes() {
 
     switch (rute) {
         case "/" || "//index.html":
+            controllers.random()
             controllers.search()
-
             break
         case "/search.html":
             controllers.list()
