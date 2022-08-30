@@ -13,7 +13,7 @@ export function rutes() {
             controllers.search()
             break;
         case "/meal.html":
-            console.log(localStorage.getItem("selectedId"));
+            console.log(JSON.parse(localStorage.getItem("mealSelected")));
             controllers.showInfo();
             break;
     }
