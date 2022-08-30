@@ -104,7 +104,7 @@ const controllers = {
     },
     //VISTA MEAL
     retrieveRecipe: function () {
-        return  JSON.parse(localStorage.getItem("mealSelected"))
+        return  JSON.parse(localStorage.getItem("mealSelected"))[0]
     },
     
     retrieveIngredients: function(recipe) {
