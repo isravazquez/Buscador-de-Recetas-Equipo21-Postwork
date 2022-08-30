@@ -61,8 +61,44 @@ const controllers = {
         card.appendChild(img)
         card.appendChild(cardTitleContainer)
         return link
-    }
+    },
 
+    //VISTA MEAL
+    retrieveRecipe: function () {
+        return  JSON.parse(localStorage.getItem("mealSelected"))
+    },
+    
+    retrieveIngredients: function(recipe) {
+        let ingredients = []
+        for (const key in recipe) {
+            if (key.includes('Ingredient') && recipe[key].length > 0) {
+                ingredients.push(recipe[key])
+            }
+        }
+        return ingredients
+    },
+    
+    insertIngredients: function(list, container) {
+        for (let i = 0; i < list.length; i++) {
+            const ingredient = document.createElement('li')
+            ingredient.textContent = list[i]
+            ingredient.className = 'list-group-item' 
+            container.appendChild(ingredient)
+        }
+    },
+    
+    showInfo: function() {
+        let name = document.getElementById('recipe')
+        let image = document.getElementById('photo')
+        let prep = document.querySelector('.prep')
+        let ingredients = document.getElementById('ingredients')
+        const recipe = retrieveRecipe()
+    
+        name.textContent = recipe['strMeal'] 
+        image.src = recipe['strMealThumb']
+        prep.textContent = recipe['strInstructions']
+        insertIngredients(retrieveIngredients(recipe), ingredients)
+    }
 }
 
 module.exports = controllers

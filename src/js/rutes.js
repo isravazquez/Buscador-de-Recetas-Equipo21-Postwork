@@ -15,6 +15,7 @@ export function rutes() {
             break;
         case "/meal.html":
             console.log("meal");
+            controllers.showInfo();
             break;
     }
 
