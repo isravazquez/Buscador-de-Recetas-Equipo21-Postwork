@@ -17,13 +17,25 @@ const controllers = {
             warning.style.textAlign = "center"
             warning.style.margin = "2rem"
             cardsContainer.appendChild(warning)
+
         } else {
             const { meals } = await this.requestAPI(localStorage.getItem("inputValue"))
-            meals.forEach(meal => {
-                cardsContainer.appendChild(this.createCard(meal))
-            })
-        }
 
+            if (meals) {
+                localStorage.setItem('foundMeals', JSON.stringify(meals));
+                meals.forEach(meal => {
+                    cardsContainer.appendChild(this.createCard(meal))
+                })
+            } else {
+                const warning = document.createElement("h2")
+                const warningText = document.createTextNode("No se encontró receta. Vuelve a intentar")
+                warning.appendChild(warningText)
+                warning.style.color = "red"
+                warning.style.textAlign = "center"
+                warning.style.margin = "2rem"
+                cardsContainer.appendChild(warning)
+            }
+        }
     },
     requestAPI: async function (mealToSearch) {
         try {
@@ -37,7 +49,8 @@ const controllers = {
     createCard: function (meal) {
         const link = document.createElement('a')
         link.className = "col-12 col-sm-6 col-md-4"
-        link.href = "/meal.html" //Posiblemente se quite si hacemos que una función redirija el enlace
+        link.href = "#" //Posiblemente se quite si hacemos que una función redirija el enlace
+        link.id = meal.idMeal
 
         const card = document.createElement("div")
         card.className = "card mx-auto my-2"
@@ -60,9 +73,36 @@ const controllers = {
 
         card.appendChild(img)
         card.appendChild(cardTitleContainer)
+
+        link.addEventListener("click", () => {
+
+            const mealSelected = JSON.parse(localStorage.getItem("foundMeals")).filter(function(item){
+                console.log(item.idMeal);
+                console.log(link.id);
+                item.idMeal == link.id
+            })
+            console.log(mealSelected);
+        })
         return link
     },
-
+    random: async function(){
+        const randomButton = document.getElementById("button-random-search")
+        randomButton.addEventListener("click", async () => {
+            const   randomMeal  = await this.fetchAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
+            //console.log(randomMeal.meals[0])  // Imprime el primer obejeto del arreglo meals
+            return window.open("../meal.html", "_self");
+        })
+    },
+    fetchAPI: async function (apiMethod) {
+        try {
+            const response = await fetch(apiMethod)
+            const data = await response.json()
+            //return data.meals[0]  // Retorna solo el primer objeto
+            return data                   // Retorna todo el arreglo de objetos
+        } catch (err) {
+            console.error(err);
+        }
+    },
     //VISTA MEAL
     retrieveRecipe: function () {
         return  JSON.parse(localStorage.getItem("mealSelected"))
@@ -92,12 +132,12 @@ const controllers = {
         let image = document.getElementById('photo')
         let prep = document.querySelector('.prep')
         let ingredients = document.getElementById('ingredients')
-        const recipe = retrieveRecipe()
+        const recipe = this.retrieveRecipe()
     
         name.textContent = recipe['strMeal'] 
         image.src = recipe['strMealThumb']
         prep.textContent = recipe['strInstructions']
-        insertIngredients(retrieveIngredients(recipe), ingredients)
+        insertIngredients(this.retrieveIngredients(recipe), ingredients)
     }
 }
 
