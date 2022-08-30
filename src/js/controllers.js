@@ -66,6 +66,7 @@ const controllers = {
         const randomButton = document.getElementById("button-random-search")
         randomButton.addEventListener("click", async () => {
             const   randomMeal  = await this.fetchAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
+            //console.log(randomMeal.meals[0])  // Imprime el primer obejeto del arreglo meals
             return window.open("../meal.html", "_self");
         })
     },
