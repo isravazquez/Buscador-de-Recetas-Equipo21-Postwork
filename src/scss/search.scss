@@ -8,6 +8,11 @@
         width: 100vw;
         position: relative;
         background-color: $nav-color;
+        filter: drop-shadow(0 5px 20px black);
+
+        img{
+            filter: drop-shadow(5px 5px 10px black);
+        }
 
 
         .search-form-container form {
@@ -44,6 +49,8 @@
         display: inline-block;
         border: none;
         width: 100%;
+        filter: drop-shadow(5px 5px 20px black);
+
 
         .card-img {
             max-height: 20vh;

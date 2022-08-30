@@ -7,6 +7,12 @@
         width: 100vw;
         position: relative;
         background-color: $nav-color;
+        filter: drop-shadow(0 5px 20px black);
+
+
+        img{
+            filter: drop-shadow(5px 5px 10px black);
+        }
 
         .go-home {
             color: $white;
@@ -24,6 +30,8 @@
         display: inline-block;
         border: none;
         width: 100%;
+        filter: drop-shadow(5px 5px 20px black);
+
 
         .card-img {
             max-height: 60vh;
@@ -52,6 +60,8 @@
 
 
     .information {
+        filter: drop-shadow(5px 5px 20px black);
+
         .list-group {
             border: 1px solid rgb(194, 194, 0);
             border-radius: 15px;

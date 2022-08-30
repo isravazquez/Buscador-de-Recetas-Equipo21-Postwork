@@ -26,6 +26,12 @@ body {
 
     img.logo {
       width: 5rem;
+      filter: drop-shadow(5px 5px 10px black);
+      transition: 1s;
+
+      &:hover {
+        width: 5.5rem;
+      }
     }
 
     #title {
