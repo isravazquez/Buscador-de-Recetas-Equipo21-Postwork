@@ -88,8 +88,8 @@ const controllers = {
     random: async function(){
         const randomButton = document.getElementById("button-random-search")
         randomButton.addEventListener("click", async () => {
-            const   randomMeal  = await this.fetchAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
-            //console.log(randomMeal.meals[0])  // Imprime el primer obejeto del arreglo meals
+            const   {meals:randomMeal}  = await this.fetchAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
+            localStorage.setItem("mealSelected", JSON.stringify(randomMeal))
             return window.open("../meal.html", "_self");
         })
     },
@@ -97,7 +97,6 @@ const controllers = {
         try {
             const response = await fetch(apiMethod)
             const data = await response.json()
-            //return data.meals[0]  // Retorna solo el primer objeto
             return data                   // Retorna todo el arreglo de objetos
         } catch (err) {
             console.error(err);
