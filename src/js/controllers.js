@@ -1,7 +1,8 @@
 const controllers = {
     search: function () { // Almacena lo que el usuario escribe en el buscador
         const searchButton = document.getElementById("button-addon2")
-        searchButton.addEventListener("click", () => {
+        searchButton.addEventListener("click", (event) => {
+            event.preventDefault()
             const inputValue = document.getElementById("input").value
             localStorage.setItem('inputValue', inputValue); //Se lo que se escribió en localStorage
             return window.open("../search.html", "_self");
