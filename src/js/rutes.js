@@ -1,18 +1,20 @@
-import controllers from './controllers'
+// Rutas:
+// Definimos en este archivo las funciones que deben ejecutarse según dónde el usario interactúe
+import controllers from './controllers' // Importamos todas las funciones
 
 export function rutes() {
     let rute = window.location.pathname
 
     switch (rute) {
-        case "/" || "//index.html":
+        case "/" || "//index.html":// Ruta home o index
             controllers.random()
             controllers.search()
             break
-        case "/search.html":
+        case "/search.html": //En la sección de búsqueda
             controllers.list()
             controllers.search()
             break;
-        case "/meal.html":
+        case "/meal.html": //En la sección de receta seleccionada
             controllers.showInfo();
             break;
     }
