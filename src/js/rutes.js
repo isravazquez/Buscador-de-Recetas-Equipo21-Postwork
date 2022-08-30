@@ -6,15 +6,13 @@ export function rutes() {
     switch (rute) {
         case "/" || "//index.html":
             controllers.search()
-
             break
         case "/search.html":
             controllers.list()
             controllers.search()
-
             break;
         case "/meal.html":
-            console.log("meal");
+            console.log(localStorage.getItem("selectedId"));
             break;
     }
 

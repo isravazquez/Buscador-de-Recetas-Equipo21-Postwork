@@ -17,13 +17,25 @@ const controllers = {
             warning.style.textAlign = "center"
             warning.style.margin = "2rem"
             cardsContainer.appendChild(warning)
+
         } else {
             const { meals } = await this.requestAPI(localStorage.getItem("inputValue"))
-            meals.forEach(meal => {
-                cardsContainer.appendChild(this.createCard(meal))
-            })
-        }
 
+            if (meals) {
+                localStorage.setItem('foundMeals', JSON.stringify(meals));
+                meals.forEach(meal => {
+                    cardsContainer.appendChild(this.createCard(meal))
+                })
+            } else {
+                const warning = document.createElement("h2")
+                const warningText = document.createTextNode("No se encontró receta. Vuelve a intentar")
+                warning.appendChild(warningText)
+                warning.style.color = "red"
+                warning.style.textAlign = "center"
+                warning.style.margin = "2rem"
+                cardsContainer.appendChild(warning)
+            }
+        }
     },
     requestAPI: async function (mealToSearch) {
         try {
@@ -37,7 +49,8 @@ const controllers = {
     createCard: function (meal) {
         const link = document.createElement('a')
         link.className = "col-12 col-sm-6 col-md-4"
-        link.href = "/meal.html" //Posiblemente se quite si hacemos que una función redirija el enlace
+        link.href = "#" //Posiblemente se quite si hacemos que una función redirija el enlace
+        link.id = meal.idMeal
 
         const card = document.createElement("div")
         card.className = "card mx-auto my-2"
@@ -60,6 +73,16 @@ const controllers = {
 
         card.appendChild(img)
         card.appendChild(cardTitleContainer)
+
+        link.addEventListener("click", () => {
+
+            const mealSelected = JSON.parse(localStorage.getItem("foundMeals")).filter(function(item){
+                console.log(item.idMeal);
+                console.log(link.id);
+                item.idMeal == link.id
+            })
+            console.log(mealSelected);
+        })
         return link
     }
 
