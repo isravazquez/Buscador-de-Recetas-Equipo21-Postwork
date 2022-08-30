@@ -49,7 +49,7 @@ const controllers = {
     createCard: function (meal) {
         const link = document.createElement('a')
         link.className = "col-12 col-sm-6 col-md-4"
-        link.href = "#" //Posiblemente se quite si hacemos que una función redirija el enlace
+        link.href = "/meal.html" //Posiblemente se quite si hacemos que una función redirija el enlace
         link.id = meal.idMeal
 
         const card = document.createElement("div")
@@ -75,13 +75,12 @@ const controllers = {
         card.appendChild(cardTitleContainer)
 
         link.addEventListener("click", () => {
-
-            const mealSelected = JSON.parse(localStorage.getItem("foundMeals")).filter(function(item){
-                console.log(item.idMeal);
-                console.log(link.id);
-                item.idMeal == link.id
+            const foundMeals = JSON.parse(localStorage.getItem("foundMeals"))
+            console.log(foundMeals);
+            const mealSelected = foundMeals.filter(function(item){
+                return item.idMeal == link.id
             })
-            console.log(mealSelected);
+            localStorage.setItem("mealSelected", JSON.stringify(mealSelected))
         })
         return link
     },
