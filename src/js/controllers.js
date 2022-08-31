@@ -10,7 +10,7 @@ const controllers = {
     },
     list: async function () { //Lista los resultados de lo que el usario busco
         const cardsContainer = document.getElementById("cards-container")
-        if (/\s/.test(localStorage.getItem("inputValue")) || !localStorage.getItem("inputValue")) { //Si el usario no escribe nada o busca un elemento con espacio renderiza una alerta
+        if (/^\s+$/.test(localStorage.getItem("inputValue")) || !localStorage.getItem("inputValue")) { //Si el usario no escribe nada o busca un elemento con espacio renderiza una alerta
             const warning = document.createElement("h2")
             const warningText = document.createTextNode("No olvides escribir una receta en el buscador.")
             warning.appendChild(warningText)
