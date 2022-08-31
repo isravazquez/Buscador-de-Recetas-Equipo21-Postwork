@@ -102,22 +102,22 @@ const controllers = {
             console.error(err);
         }
     },
-    //VISTA MEAL
-    retrieveRecipe: function () {
+   
+    retrieveRecipe: function () { //Función que recupera la receta seleccionada del localStorage
         return  JSON.parse(localStorage.getItem("mealSelected"))[0]
     },
     
-    retrieveIngredients: function(recipe) {
+    retrieveIngredients: function(recipe) {  //Función que crea una lista de los N ingredientes que tienen el objeto recuperado
         let ingredients = []
         for (const key in recipe) {
-            if (key.includes('Ingredient') && recipe[key].length > 0) {
+            if (key.includes('Ingredient') && recipe[key].length > 0) { //Verificamos que tenga información el campo ya que hay ingredientes sin info
                 ingredients.push(recipe[key])
             }
         }
         return ingredients
     },
     
-    insertIngredients: function(list, container) {
+    insertIngredients: function(list, container) {  //Función que agrega los N ingredientes al elemento lista del HTML
         for (let i = 0; i < list.length; i++) {
             const ingredient = document.createElement('li')
             ingredient.textContent = list[i]
@@ -126,14 +126,14 @@ const controllers = {
         }
     },
     
-    showInfo: function() {
+    showInfo: function() {  //Función que muestra toda la información de la receta seleccionada en la pantalla de meal
         let name = document.getElementById('recipe')
         let image = document.getElementById('photo')
         let prep = document.querySelector('.prep')
         let ingredients = document.getElementById('ingredients')
         const recipe = this.retrieveRecipe()
     
-        name.textContent = recipe['strMeal'] 
+        name.textContent = recipe['strMeal']    //Accedemos a los campos de nuestro objeto seleccionado para vaciarlos en la vista
         image.src = recipe['strMealThumb']
         prep.textContent = recipe['strInstructions']
         this.insertIngredients(this.retrieveIngredients(recipe), ingredients)
