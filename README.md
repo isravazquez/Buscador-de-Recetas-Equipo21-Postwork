@@ -7,7 +7,7 @@ La aplicación tiene tres interfaces:
 
 ### HOME
 En ella puedes escribir cualquier receta que se pueda imaginar. Debe buscarse en inglés. También tiene un botón de **Receta Aleatoria** que busca una receta aleatoriamente. Si accedes a busqueda se renderizará la vista de *Search*, en cambio al seleccionar aleatoria se renderiza directamente la vista de *Meal*.
-
+![home-img](https://drive.google.com/file/d/1y-fZGefXk4RA8RrnwkCYPDvP3MGDqAAw/view?usp=sharing)
 
 ### SEARCH
 Cuando se hace la busqueda se renderiza esta vista. En esta se listan los elementos que se encontraron. Si no se encontró ninguno o se buscaron elementos no compatibles (como espacios en blanco sin más texto) se muestra una leyenda con una descripción. Se sigue mostrando la busqueda por si se desea hace una nueva. Al seleccionar una receta se renderiza la vista *Meal*.
@@ -34,13 +34,13 @@ Es la vista que renderiza la información del resultado. Se muestra la imagen co
 > Se necesita Node.js
 
 Obten un clon del repostiorio: introduce lo siguiente:
-<git clone https://github.com/isravazquez/Buscador-de-Recetas-Equipo21-Postwork.git>
+< git clone https://github.com/isravazquez/Buscador-de-Recetas-Equipo21-Postwork.git >
 
 ## Configurar
-Después de clonar el respositorio se acede a la carpeta del proyecto y se instalan dependencias:
-<cd Buscador-de-Recetas-Equipo21-Postwork>
-<npm install>
-<npm start>
+Después de clonar el respositorio se accede a la carpeta del proyecto y se instalan dependencias:
+< cd Buscador-de-Recetas-Equipo21-Postwork >
+< npm install >
+< npm start >
 
 ## Autores
 |                |GitHub                                         |IMG                          |
@@ -57,6 +57,8 @@ Si te gustó da ⭐️ ¡Gracias!
 
 ## Créditos
 - [TheMealDB](https://www.themealdb.com/api.php) para la API externa.
-- José Guerrero Nuesto experto en BEDU.
-- BEDU
-
+- [José Guerrero](https://www.linkedin.com/in/jos%C3%A9-guerrero-3669481/) Nuesto experto en BEDU (Profesor).
+- [Héctor Sifuentes](https://www.linkedin.com/in/hectorsifloz) Teaching Assistant.
+- [Pedro Fragoso](https://www.linkedin.com/in/pedrofragosomaldonado) Teaching Assistant.
+- [Erandi Garcia](https://www.linkedin.com/in/erandi-garc%C3%ADa-b74a341b2/) Ejecutiva de experiencia educativa.
+- [BEDU](https://bedu.org/) Nuestra escuela.
