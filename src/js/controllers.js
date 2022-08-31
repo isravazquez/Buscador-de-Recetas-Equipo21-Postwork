@@ -50,7 +50,7 @@ const controllers = {
     createCard: function (meal) { // Función para crear cada carta en la búsqueda
         const link = document.createElement('a') // Creación del contenedor
         link.className = "col-12 col-sm-6 col-md-4"
-        link.href = "/meal.html" 
+        link.href = "/meal.html"
         link.id = meal.idMeal // IMPORTANTE: se usara el id para seleccionar unna receta
 
         const card = document.createElement("div")
@@ -61,7 +61,7 @@ const controllers = {
         const img = document.createElement("img")
         img.className = "card-img"
         img.src = meal.strMealThumb
-        img.alt = `${meal.strArea}-${meal.strCategory}-img` 
+        img.alt = `${meal.strArea}-${meal.strCategory}-img`
 
         const cardTitleContainer = document.createElement("div")
         cardTitleContainer.className = "card-title"
@@ -78,17 +78,17 @@ const controllers = {
         link.addEventListener("click", () => { //IMPORTANTE: Función que permite seleccionar una receta a través del id
             const foundMeals = JSON.parse(localStorage.getItem("foundMeals"))
             console.log(foundMeals);
-            const mealSelected = foundMeals.filter(function(item){ //Creación del objeto seleccionado a través de filtrar el array de objetos
+            const mealSelected = foundMeals.filter(function (item) { //Creación del objeto seleccionado a través de filtrar el array de objetos
                 return item.idMeal == link.id //El id es lo que nos permite seleccionar una sola receta
             })
             localStorage.setItem("mealSelected", JSON.stringify(mealSelected))// IMPORTANTE: Se guarda en localStorage el objeto de la receta que se seleccionó
         })
         return link
     },
-    random: async function(){
+    random: async function () {
         const randomButton = document.getElementById("button-random-search")
         randomButton.addEventListener("click", async () => {
-            const   {meals:randomMeal}  = await this.fetchAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
+            const { meals: randomMeal } = await this.fetchAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
             localStorage.setItem("mealSelected", JSON.stringify(randomMeal))
             return window.open("../meal.html", "_self");
         })
@@ -102,37 +102,44 @@ const controllers = {
             console.error(err);
         }
     },
-   
+
     retrieveRecipe: function () { //Función que recupera la receta seleccionada del localStorage
-        return  JSON.parse(localStorage.getItem("mealSelected"))[0]
+        return JSON.parse(localStorage.getItem("mealSelected"))[0]
     },
-    
-    retrieveIngredients: function(recipe) {  //Función que crea una lista de los N ingredientes que tienen el objeto recuperado
+
+    retrieveIngredients: function (recipe) {  //Función que crea una lista de los N ingredientes junto con las cantidades que tiene el objeto recuperado
         let ingredients = []
+        let measures = []
+        let completeInfo = []
         for (const key in recipe) {
             if (key.includes('Ingredient') && recipe[key].length > 0) { //Verificamos que tenga información el campo ya que hay ingredientes sin info
                 ingredients.push(recipe[key])
+            } else if (key.includes('Measure') && recipe[key].length > 0) {
+                measures.push(recipe[key])
             }
         }
-        return ingredients
+        for (let i = 0; i < ingredients.length; i++) {  //Concatenamos los ingredientes junto con la cantidad 
+            completeInfo.push(ingredients[i] + " - " + measures[i])
+        }
+        return completeInfo
     },
-    
-    insertIngredients: function(list, container) {  //Función que agrega los N ingredientes al elemento lista del HTML
+
+    insertIngredients: function (list, container) {  //Función que agrega los N ingredientes al elemento lista del HTML
         for (let i = 0; i < list.length; i++) {
             const ingredient = document.createElement('li')
             ingredient.textContent = list[i]
-            ingredient.className = 'list-group-item' 
+            ingredient.className = 'list-group-item'
             container.appendChild(ingredient)
         }
     },
-    
-    showInfo: function() {  //Función que muestra toda la información de la receta seleccionada en la pantalla de meal
+
+    showInfo: function () {  //Función que muestra toda la información de la receta seleccionada en la pantalla de meal
         let name = document.getElementById('recipe')
         let image = document.getElementById('photo')
         let prep = document.querySelector('.prep')
         let ingredients = document.getElementById('ingredients')
         const recipe = this.retrieveRecipe()
-    
+
         name.textContent = recipe['strMeal']    //Accedemos a los campos de nuestro objeto seleccionado para vaciarlos en la vista
         image.src = recipe['strMealThumb']
         prep.textContent = recipe['strInstructions']
