@@ -7,7 +7,8 @@ La aplicación tiene tres interfaces:
 
 ### HOME
 En ella puedes escribir cualquier receta que se pueda imaginar. Debe buscarse en inglés. También tiene un botón de **Receta Aleatoria** que busca una receta aleatoriamente. Si accedes a busqueda se renderizará la vista de *Search*, en cambio al seleccionar aleatoria se renderiza directamente la vista de *Meal*.
-![home-img](https://drive.google.com/file/d/1y-fZGefXk4RA8RrnwkCYPDvP3MGDqAAw/view?usp=sharing)
+
+![home-img](https://drive.google.com/uc?export=view&id=1y-fZGefXk4RA8RrnwkCYPDvP3MGDqAAw)
 
 ### SEARCH
 Cuando se hace la busqueda se renderiza esta vista. En esta se listan los elementos que se encontraron. Si no se encontró ninguno o se buscaron elementos no compatibles (como espacios en blanco sin más texto) se muestra una leyenda con una descripción. Se sigue mostrando la busqueda por si se desea hace una nueva. Al seleccionar una receta se renderiza la vista *Meal*.
@@ -38,9 +39,16 @@ Obten un clon del repostiorio: introduce lo siguiente:
 
 ## Configurar
 Después de clonar el respositorio se accede a la carpeta del proyecto y se instalan dependencias:
-< cd Buscador-de-Recetas-Equipo21-Postwork >
-< npm install >
-< npm start >
+
+```sh
+cd Buscador-de-Recetas-Equipo21-Postwork
+```
+```sh
+npm install
+```
+```sh
+npm start
+```
 
 ## Autores
 |                |GitHub                                         |IMG                          |
@@ -62,3 +70,6 @@ Si te gustó da ⭐️ ¡Gracias!
 - [Pedro Fragoso](https://www.linkedin.com/in/pedrofragosomaldonado) Teaching Assistant.
 - [Erandi Garcia](https://www.linkedin.com/in/erandi-garc%C3%ADa-b74a341b2/) Ejecutiva de experiencia educativa.
 - [BEDU](https://bedu.org/) Nuestra escuela.
+
+## Licencia
+MIT
