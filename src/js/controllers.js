@@ -18,27 +18,28 @@ const controllers = {
             warning.style.textAlign = "center"
             warning.style.margin = "2rem"
             cardsContainer.appendChild(warning)
-
-        } else {
-            const { meals } = await this.requestAPI(localStorage.getItem("inputValue"))//Si se encuentra un input se realiza la petición a través de una función (asíncrona)
-
-            if (meals) {// Una vez encontrada la receta se procede a crear la lista.
-                localStorage.setItem('foundMeals', JSON.stringify(meals)); // Se guarda la información obtenida para usarla en otra parte
-                meals.forEach(meal => {
-                    cardsContainer.appendChild(this.createCard(meal)) //Se usa la función createCard para crear cada carted e cada receta enconntrada
-                })
-            } else { // En casa de no encontrar ninguna receta renderiza una leyenda...
-                const warning = document.createElement("h2")
-                const warningText = document.createTextNode("No se encontró receta. Vuelve a intentar.")
-                warning.appendChild(warningText)
-                warning.style.color = "red"
-                warning.style.textAlign = "center"
-                warning.style.margin = "2rem"
-                cardsContainer.appendChild(warning)
-            }
+            return
         }
+
+        const { meals } = await this.searchByNameAPI(localStorage.getItem("inputValue"))//Si se encuentra un input se realiza la petición a través de una función (asíncrona)
+
+        if (!meals) { // En caso de no encontrar ninguna receta renderiza una leyenda...
+            const warning = document.createElement("h2")
+            const warningText = document.createTextNode("No se encontró receta. Vuelve a intentar.")
+            warning.appendChild(warningText)
+            warning.style.color = "red"
+            warning.style.textAlign = "center"
+            warning.style.margin = "2rem"
+            cardsContainer.appendChild(warning)
+            return
+        } // Una vez encontrada la receta se procede a crear la lista.
+        localStorage.setItem('foundMeals', JSON.stringify(meals)); // Se guarda la información obtenida para usarla en otra parte
+        meals.forEach(meal => {
+            cardsContainer.appendChild(this.createCard(meal)) //Se usa la función createCard para crear cada carted e cada receta enconntrada
+        })
+        return
     },
-    requestAPI: async function (mealToSearch) { // Función asíncrona para buscar recetas a la API
+    searchByNameAPI: async function (mealToSearch) { // Función asíncrona para buscar recetas a la API
         try {
             const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealToSearch}`)//Petición al servidor. Se añade la palabra que el usario escribió.
             const meals = await response.json()
@@ -88,12 +89,12 @@ const controllers = {
     random: async function () {
         const randomButton = document.getElementById("button-random-search")
         randomButton.addEventListener("click", async () => {
-            const { meals: randomMeal } = await this.fetchAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
+            const { meals: randomMeal } = await this.randomAPI(`https://www.themealdb.com/api/json/v1/1/random.php`)
             localStorage.setItem("mealSelected", JSON.stringify(randomMeal))
             return window.open("../meal.html", "_self");
         })
     },
-    fetchAPI: async function (apiMethod) {
+    randomAPI: async function (apiMethod) {
         try {
             const response = await fetch(apiMethod)
             const data = await response.json()
