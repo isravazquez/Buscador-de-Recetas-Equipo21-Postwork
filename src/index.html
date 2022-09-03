@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Today's Menu</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="gridLayout">
+        <!-- GRID DE LA PAGINA -->
+        <header>
+            <!-- LOGO -->
+            <div class="logo-container">
+                <img class="logo" src="./img/veggie-penguin.svg">
+            </div>
+            <!-- TITULO -->
+            <div class="row">
+                <h1 id="title">Today's Menu</h1>
+            </div>
+        </header>
+
+        <!-- CONTENEDOR DE SECCION DE BUSQUEDA -->
+        <div class="container search">
+
+            <!-- IMPUT Y BOTON DE BUSQUEDA -->
+            <div class="row">
+                <form>
+                    <div class="input-group   mb-3">
+                        <input type="text" class="form-control" placeholder="¿Que quieres cocinar hoy?" type="search"
+                            aria-label="Recipient's username" aria-describedby="button-addon2" id="input">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                            <span class="material-symbols-outlined" alt="buscar">
+                                search
+                            </span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- BOTON DE BUSQUEDA ALEATORIA -->
+            <div class="row">
+                <div class="random-search-container">
+                    <button type="button" class="btn btn-outline-danger" id="button-random-search">
+                        Receta aleatoria
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PIE DE PAGINA -->
+        <footer>
+
+            <!-- <a href="#" id="team-link">Equipo 21</a> -->
+            <p>Equipo 21</p>
+            <p>|</p>
+            <a href="#" id="about-link">Acerca del proyecto</a>
+            <p>|</p>
+            <p>Sep 2022</p>
+
+            <div id="modal-about">
+                <span id="closeAbout">&times;</span>
+                <article id="about-content">
+                    <h3>Buscador de Recetas del Equipo 21 - BEDU</h3>
+                    <p>Este proyecto es una aplicación web basada en una API externa. La API seleccionada es
+                        [TheMealDB](<a href="https://www.themealdb.com/api.php">https://www.themealdb.com/api.php</a>).
+                        <br><br>
+
+                    <h5>Autores</h5>
+                    <div id="modal-cards">
+
+                        <div class="author-card">
+                            <img class="profile-pic"
+                                src="https://camo.githubusercontent.com/69567cc9a02178999fe5c66e2e5f0bbf0ac9ab048ba74ca11598a71b86af6bf7/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d766965772669643d3143426466596338496c6778536a414d536652565938546744596f30556c6b5364">
+                            <p class="author-name">Jaime <br>Vazquez</p>
+                            <a class="gitHub-link" href="https://github.com/isravazquez">isravazquez</a>
+                        </div>
+
+                        <div class="author-card">
+                            <img class="profile-pic"
+                                src="https://camo.githubusercontent.com/6e0ae5fdfc4fdc367e7fa1d608eb24cb4ac3ba9cd7841d6ae1e82d6b6515d8d7/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d766965772669643d31496b316a3067776b30363842434d772d77344a4f6852624f36736f6933594232">
+                            <p class="author-name">Javier <br>Luna</p>
+                            <a class="gitHub-link" href="https://github.com/JavierLuna99">JavierLuna99</a>
+                        </div>
+
+                        <div class="author-card">
+                            <img class="profile-pic"
+                                src="https://camo.githubusercontent.com/e86a152fdbcc3208e44a38b715500a14c23007bd3212517c5872065d5cea7ec8/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d766965772669643d3171515f31785671654c6268375f44575545452d4e686a645475436a706c316f37">
+                            <p class="author-name">Eduardo <br>Trejo Maldonado</p>
+                            <a class="gitHub-link" href="https://github.com/Eduardo-UX01">Eduardo-UX01</a>
+                        </div>
+
+                    </div>
+                    <div id="buttonsTOrepository">
+                        <a id="repo-link" class="btn btn-primary"
+                            href="https://github.com/isravazquez/Buscador-de-Recetas-Equipo21-Postwork/tree/main"
+                            role="button">Ir al Repositorio</a>
+                        <a id="readme-link" class="btn btn-outline-danger"
+                            href="https://github.com/isravazquez/Buscador-de-Recetas-Equipo21-Postwork/blob/functions/README.md"
+                            role="button">README.md</a>
+                    </div>
+                    
+                    </p>
+                </article>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
