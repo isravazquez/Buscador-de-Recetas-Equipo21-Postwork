@@ -9,6 +9,7 @@ export function rutes() {
         case "/" || "//index.html":// Ruta home o index
             controllers.random()
             controllers.search()
+            controllers.about()
             break
         case "/search.html": //En la sección de búsqueda
             controllers.list()

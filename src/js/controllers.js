@@ -144,6 +144,20 @@ const controllers = {
         image.src = recipe['strMealThumb']
         prep.textContent = recipe['strInstructions']
         this.insertIngredients(this.retrieveIngredients(recipe), ingredients)
+    },
+
+    about: async function () {
+        const modal = document.getElementById("modal-about");
+        const button = document.getElementById('about-link');
+        const close = document.getElementById("closeAbout");
+
+        button.addEventListener('click', function () {
+            modal.style.display = "block";
+        })
+
+        close.addEventListener('click', function () {
+            modal.style.display = "none";
+        })
     }
 }
 

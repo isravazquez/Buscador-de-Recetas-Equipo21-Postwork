@@ -7,10 +7,10 @@ body {
 }
 
 .gridLayout {
-  height: 100vh;
+  height: calc(100vh - 3rem);
   display: grid;
   grid-template-columns: 0.5fr 9fr 0.5fr;
-  grid-template-rows: 40% 55% 5%;
+  grid-template-rows: 40% 60.1% 3rem;
   grid-template-areas:
     "head    head        head"
     ".          search      .     "
@@ -22,7 +22,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: end;
-
 
     img.logo {
       width: 5rem;
@@ -44,7 +43,6 @@ body {
       padding: 1rem;
       font-family: 'Raleway', sans-serif;
     }
-
   }
 
   .container.search {
@@ -63,6 +61,7 @@ body {
     #button-addon2 {
       background-color: #72c96a;
       border-width: 2px;
+      z-index: 1;
 
       .material-symbols-outlined {
         font-variation-settings:
@@ -81,17 +80,124 @@ body {
         border-width: 2px;
         border-color: #730220;
       }
+
     }
   }
 
   footer {
-    background-color: #f2f2f2;
+    background-color: rgb(242, 242, 242);
     grid-area: foot;
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    justify-content: center;
+    align-content: center;
 
-    #about {
-      margin-bottom: 0%;
-      display: flex;
-      justify-content: center;
+    #about-link {}
+
+    #modal-about {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      #closeAbout {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      #closeAbout:hover,
+      #closeAbout:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      #about-content {
+        background-color: #f2f2f2;
+        margin: auto;
+        padding: 1rem;
+        display: block;
+        min-width: fit-content;
+        max-width: 100vh;
+        border-width: 2px;
+        border-radius: 24px;
+        border-color: #730220;
+
+        h3 {
+          display: flex;
+          justify-content: center;
+        }
+
+        #buttonsTOrepository {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        #readme-link,
+        #repo-link {
+          display: flex;
+          width: fit-content;
+          margin-top: 2rem;
+        }
+
+        #repo-link {
+          background-color: #72c96a;
+          border-width: 2px;
+        }
+
+        #readme-link {
+          border-width: 2px;
+          border-color: #730220;
+        }
+
+        #modal-cards {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          .author-card {
+            display: grid;
+            grid-template-columns: 2rem 2rem 2rem 10rem;
+            grid-template-rows: 2rem 1rem 3rem;
+            grid-template-areas:
+              "pic   pic   pic name"
+              "pic   pic   pic name"
+              "pic   pic   pic link";
+
+            .profile-pic {
+              grid-area: pic;
+              width: 100%;
+              margin: 1rem;
+            }
+
+            .author-name {
+              grid-area: name;
+              margin-top: 1rem;
+              margin-left: 2rem;
+            }
+
+            .gitHub-link {
+              grid-area: link;
+              margin-top: 1rem;
+              margin-left: 2rem;
+            }
+          }
+        }
+      }
+
     }
   }
 }
