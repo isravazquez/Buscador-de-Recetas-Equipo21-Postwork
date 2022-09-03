@@ -32,8 +32,7 @@ Es la vista que renderiza la información del resultado. Se muestra la imagen co
 - Bootstrap
 
 ## Recursos
-- [VIDEO]()
-- [APP]()
+- [VIDEO](https://drive.google.com/file/d/1yxJ6kvA6a--gOSovEftzYZmKCLrLkOTl/view?usp=sharing)
 
 ## Empezar
 
