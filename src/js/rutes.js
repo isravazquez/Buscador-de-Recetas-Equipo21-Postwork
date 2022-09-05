@@ -6,7 +6,8 @@ export function rutes() {
     let rute = window.location.pathname
 
     switch (rute) {
-        case "/" || "//index.html":// Ruta home o index
+        case"/index.html":
+        case "/" :// Ruta home o index
             controllers.random()
             controllers.search()
             controllers.about()
