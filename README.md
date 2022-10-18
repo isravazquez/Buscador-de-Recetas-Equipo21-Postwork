@@ -3,6 +3,8 @@
 > Proyecto final del Modulo 2: Programación con JavaScript Santander 2022 elaborado por el Equipo 21.
 
 Este proyecto es una aplicación web basada en una API externa. La API seleccionada es [TheMealDB](https://www.themealdb.com/api.php).
+El objetivo fue realizar un buscador de recetas, obtenidas de la API mencionada, en donde se puede observar a detalle datos como el proceso de preparación e ingredientes.
+
 La aplicación tiene tres interfaces: 
 
 ### HOME
